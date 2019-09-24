@@ -5,17 +5,35 @@
 #' @param verbose logical
 #'
 #' @examples
-#' df <- data_frame(foo = 1, bar = 2)
-#' drop_vars(df, foo)
-#' drop_vars(df, apple)
+#' drop_vars(mtcars, "cyl")
+#' drop_vars(mtcars, c("mpg", "cyl"))
+#' drop_vars(mtcars, mpg, cyl)
+#' drop_vars(mtcars, mpg, foo, bar)
+#' drop_vars(mtcars, c("mpg", "foo", "bar"))
+#' v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!v1)
+#' v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!!v1)
+#' v2 <- c("mpg", "foo", "bar"); drop_vars(mtcars, !!!v2)
 #'
 #' @export
-drop_vars <- function (input_data, ..., .strict = FALSE, verbose = FALSE) {
+drop_vars <- function (
+  input_data,
+  ...,
+  .strict = FALSE,
+  verbose = FALSE
+) {
 
-  msg <- function (...) if(isTRUE(verbose)) message("[drop_vars] ", ...)
+  msg <- function (...) {
+    if(isTRUE(verbose)) message("[drop_vars] ", ...)
+  }
 
-  input_vars <- names(input_data)
-  vars_to_drop <- tidyselect::vars_select(input_vars, !!!quos(...), .strict = .strict)
+  input_vars <-
+    names(input_data)
+
+  vars_to_drop <-
+    tidyselect::vars_select(
+      input_vars,
+      !!!quos(...),
+      .strict = .strict)
 
   if (length(vars_to_drop) == 0) {
     msg("not dropping anything")
