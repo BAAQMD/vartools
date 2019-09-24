@@ -1,10 +1,11 @@
 context("find_var")
 
-test_input <- data_frame(
-  foo_qty = 0,
-  foo_unit = "lbs/day",
-  baz_bap = 99,
-  foo_bap = 88)
+test_input <-
+  tibble(
+    foo_qty = 0,
+    foo_unit = "lbs/day",
+    baz_bap = 99,
+    foo_bap = 88)
 
 test_that("not found", {
   expect_error(find_var(test_input, suffix = "_baz"), "_baz in")
