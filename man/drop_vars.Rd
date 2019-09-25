@@ -17,8 +17,13 @@ drop_vars(input_data, ..., .strict = FALSE, verbose = FALSE)
 Drop one or more variables from a data frame
 }
 \examples{
-df <- data_frame(foo = 1, bar = 2)
-drop_vars(df, foo)
-drop_vars(df, apple)
+drop_vars(mtcars, "cyl")
+drop_vars(mtcars, c("mpg", "cyl"))
+drop_vars(mtcars, mpg, cyl)
+drop_vars(mtcars, mpg, foo, bar)
+drop_vars(mtcars, c("mpg", "foo", "bar"))
+v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!v1)
+v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!!v1)
+v2 <- c("mpg", "foo", "bar"); drop_vars(mtcars, !!!v2)
 
 }
