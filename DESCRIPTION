@@ -1,15 +1,16 @@
 Package: vartools
 Type: Package
 Title: Extras for tidyverse-style selection and deselection
-Version: 2019.09.24
+Version: 2019.09.25
 Author: David Holstius
 Depends:
   dplyr,
+  tidyselect,
   strtools
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Extras for tidyverse-style selection and deselection
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: testthat

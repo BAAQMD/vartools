@@ -6,6 +6,14 @@
 \usage{
 find_var(input_data, suffix)
 }
+\arguments{
+\item{input_data}{tabular data, like a tibble}
+
+\item{suffix}{character}
+}
+\value{
+First such variable (issues warning if more than one found)
+}
 \description{
 Find a single variable, with a given suffix, among the variables in your data
 }

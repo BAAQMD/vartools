@@ -2,23 +2,46 @@
 #'
 #' Find a single variable, with a given suffix, among the variables in your data
 #'
+#' @param input_data tabular data, like a tibble
+#' @param suffix character
+#'
+#' @return First such variable (issues warning if more than one found)
+#'
 #' @export
-find_var <- function (input_data, suffix) {
+find_var <- function (
+  input_data,
+  suffix
+) {
 
-  pattern <- fixed(str_c(suffix, "$"))
-  found <- select_vars(names(input_data), dplyr::matches(pattern))
+  pattern <-
+    stringr::fixed(
+      stringr::str_c(
+        suffix, "$"))
+
+  found <-
+    tidyselect::vars_select(
+      names(input_data),
+      dplyr::matches(pattern))
 
   if (length(found) == 0) {
 
-    error_msg <- str_c("No columns named xxx", suffix, " in your data.")
-    #stop(str_c(error_msg, see_help_msg))
-    stop(error_msg)
+    err_msg <-
+      stringr::str_c(
+        "No columns named xxx",
+        suffix,
+        " in your data.")
+
+    stop(err_msg)
 
   } else if (length(found) > 1) {
 
-    error_msg <- str_c("Found ", str_csv(found), " in your data. Which one should be used?")
-    #stop(str_c(error_msg, see_help_msg))
-    stop(error_msg)
+    err_msg <-
+      stringr::str_c(
+        "Found ",
+        strtools::str_csv(found),
+        " in your data. Which one should be used?")
+
+    stop(err_msg)
 
   } else {
 
