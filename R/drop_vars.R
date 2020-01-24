@@ -40,7 +40,7 @@ drop_vars <- function (
     return(input_data)
   } else {
     msg("dropping ", str_csv(vars_to_drop))
-    return(select(input_data, -one_of(vars_to_drop)))
+    return(dplyr::select(input_data, -one_of(vars_to_drop)))
   }
 
 }
