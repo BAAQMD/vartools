@@ -4,7 +4,7 @@
 \alias{drop_vars}
 \title{Drop one or more variables from a data frame}
 \usage{
-drop_vars(input_data, ..., .strict = FALSE, verbose = FALSE)
+drop_vars(input_data, ..., .strict = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{\dots}{passed to [tidyselect::vars_select()]}

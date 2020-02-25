@@ -19,28 +19,36 @@ drop_vars <- function (
   input_data,
   ...,
   .strict = FALSE,
-  verbose = FALSE
+  verbose = TRUE
 ) {
 
-  msg <- function (...) {
-    if(isTRUE(verbose)) message("[drop_vars] ", ...)
-  }
+  require(rlang)
 
-  input_vars <-
-    names(input_data)
+  try({
 
-  vars_to_drop <-
-    tidyselect::vars_select(
-      input_vars,
-      !!!quos(...),
-      .strict = .strict)
+    drop_vars <-
+      tidyselect::eval_select(
+        rlang::expr(c(...)),
+        data = input_data,
+        strict = .strict)
 
-  if (length(vars_to_drop) == 0) {
-    msg("not dropping anything")
-    return(input_data)
-  } else {
-    msg("dropping ", str_csv(vars_to_drop))
-    return(dplyr::select(input_data, -one_of(vars_to_drop)))
-  }
+    if (length(drop_vars) > 0) {
+      return(input_data[-drop_vars])
+    }
+
+  }, silent = TRUE)
+
+  return(input_data)
 
 }
+
+drop_vars(mtcars, "cyl")
+drop_vars(mtcars, c("mpg", "cyl"))
+drop_vars(mtcars, mpg, cyl)
+drop_vars(mtcars, mpg, foo, bar)
+drop_vars(mtcars, mean)
+drop_vars(mtcars, c("mpg", "foo", "bar"))
+v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!v1)
+v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!!v1)
+v2 <- c("mpg", "foo", "bar"); drop_vars(mtcars, !!!v2)
+

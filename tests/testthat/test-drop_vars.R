@@ -70,7 +70,7 @@ test_that("vector of names, present in data", {
 
 })
 
-test_that("vector of names, none present in data", {
+test_that("vector of characters, none present in data", {
 
   vars_to_drop <- c("foo", "bar")
 
@@ -85,3 +85,16 @@ test_that("vector of names, none present in data", {
 
 })
 
+test_that("single name, of a function, not present in data", {
+
+  foo <- function (...) return("foo")
+
+  dropped <-
+    mtcars %>%
+    drop_vars(
+      foo)
+
+  expect_equal(
+    names(mtcars), names(dropped))
+
+})
