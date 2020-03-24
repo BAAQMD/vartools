@@ -16,3 +16,12 @@ test_that("return if found", {
     "year")
 
 })
+
+test_that('finds plural form ("years")', {
+
+  expect_equal(
+    find_year_var(
+      rename(test_data, years = year)),
+    "years")
+
+})

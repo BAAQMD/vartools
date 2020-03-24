@@ -8,4 +8,4 @@
 find_year_var <-
   purrr::partial(
     find_var,
-    pattern = "(^year|_yr)$")
+    pattern = "(^year|_yr)(s?)$")
