@@ -18,5 +18,6 @@ Suggests:
 Collate: 
     'drop_vars.R'
     'find_var.R'
+    'find_id_var.R'
     'find_qty_var.R'
     'find_year_var.R'
