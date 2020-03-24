@@ -21,12 +21,12 @@ find_var <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[find_var] ", ...)
 
-  found <-
-    tidyselect::vars_select(
+  found_var <-
+    purrr::keep(
       names(input_data),
-      dplyr::matches(pattern))
+      ~ stringr::str_detect(., pattern))
 
-  if (length(found) == 0) {
+  if (length(found_var) == 0) {
 
     err_msg <-
       stringr::str_c(
@@ -36,20 +36,20 @@ find_var <- function (
 
     stop(err_msg)
 
-  } else if (length(found) > 1) {
+  } else if (length(found_var) > 1) {
 
     err_msg <-
       stringr::str_c(
-        "Found ",
-        strtools::str_and(found),
+        "found_var ",
+        strtools::str_and(found_var),
         " in your data. Which one should be used?")
 
     stop(err_msg)
 
   } else {
 
-    found <- unname(found)
-    return(found)
+    found_var <- unname(found_var)
+    return(found_var)
 
   }
 
