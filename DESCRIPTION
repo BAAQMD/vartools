@@ -1,7 +1,7 @@
 Package: vartools
 Type: Package
 Title: Extras for tidyverse-style selection and deselection
-Version: 2020.02.25
+Version: 2020.03.24
 Author: David Holstius
 Depends:
   dplyr,
@@ -12,5 +12,10 @@ Description: Extras for tidyverse-style selection and deselection
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: testthat
+Collate: 
+    'drop_vars.R'
+    'find_var.R'
+    'find_qty_var.R'
+    'find_year_var.R'

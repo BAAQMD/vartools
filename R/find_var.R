@@ -1,22 +1,25 @@
 #' find_var
 #'
-#' Find a single variable, with a given suffix, among the variables in your data
+#' Find the variable (i.e., column) matching a given pattern.
 #'
 #' @param input_data tabular data, like a tibble
-#' @param suffix character
+#' @param pattern regular expression (also see [glob2rx()])
+#' @param verbose display messages
 #'
-#' @return First such variable (issues warning if more than one found)
+#' @details Warns if more than one variable in `input_data` matches `pattern`,
+#'   but always returns the first such variable found. If there are no matches,
+#'   `find_var()` will display an error message and stop.
+#'
+#' @return (character) name of variable matching `pattern`.
 #'
 #' @export
 find_var <- function (
   input_data,
-  suffix
+  pattern,
+  verbose = getOption("verbose")
 ) {
 
-  pattern <-
-    stringr::fixed(
-      stringr::str_c(
-        suffix, "$"))
+  msg <- function (...) if(isTRUE(verbose)) message("[find_var] ", ...)
 
   found <-
     tidyselect::vars_select(
@@ -27,8 +30,8 @@ find_var <- function (
 
     err_msg <-
       stringr::str_c(
-        "No columns named xxx",
-        suffix,
+        "No columns matching ",
+        pattern,
         " in your data.")
 
     stop(err_msg)
@@ -38,7 +41,7 @@ find_var <- function (
     err_msg <-
       stringr::str_c(
         "Found ",
-        strtools::str_csv(found),
+        strtools::str_and(found),
         " in your data. Which one should be used?")
 
     stop(err_msg)
