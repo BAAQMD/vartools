@@ -48,6 +48,7 @@ find_var <- function (
 
   } else {
 
+    found <- unname(found)
     return(found)
 
   }
