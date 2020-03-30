@@ -1,4 +1,4 @@
-context("find_qty_var")
+context("find_year_var")
 
 test_that("stop if not found", {
 
