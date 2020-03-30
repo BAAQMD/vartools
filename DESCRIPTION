@@ -1,7 +1,7 @@
 Package: vartools
 Type: Package
 Title: Extras for tidyverse-style selection and deselection
-Version: 2020.03.24
+Version: 2020.03.30
 Author: David Holstius
 Depends:
   dplyr,
