@@ -5,7 +5,7 @@ test_that("stop if not found", {
   expect_error(
     find_year_var(
       select(test_data, -year)),
-    "No columns matching")
+    "matching")
 
 })
 

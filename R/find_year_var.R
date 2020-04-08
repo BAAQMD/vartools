@@ -1,11 +1,18 @@
-#' @include find_var.R
+#' @include find_vars.R
 
-#' @describeIn find_var Find variable named "year" or ending in "yr"
+#' @describeIn find_vars Find variable named "year" or ending in "yr"
 #'
 #' @usage find_year_var(...)
 #'
 #' @export
-find_year_var <-
-  purrr::partial(
-    find_var,
-    pattern = "(^year|_yr)(s?)$")
+find_year_var <- function (
+  input_data,
+  ...
+) {
+
+  find_var(
+    input_data,
+    dplyr::matches("(^year|_yr)(s?)$"),
+    ...)
+
+}
