@@ -1,5 +1,7 @@
 context("find_var")
 
+requireNamespace("tidyselect")
+
 test_that("stop if not found", {
 
   expect_error(
@@ -11,11 +13,11 @@ test_that("stop if not found", {
 test_that("return if found", {
 
   expect_equal(
-    find_var(test_data, dplyr::matches("_qty")),
+    find_var(test_data, tidyselect::matches("_qty")),
     "foo_qty")
 
   expect_equal(
-    find_var(test_data, dplyr::matches("_unit")),
+    find_var(test_data, tidyselect::matches("_unit")),
     "foo_unit")
 
 })
@@ -23,7 +25,7 @@ test_that("return if found", {
 test_that("stop if more than one found", {
 
   expect_error(
-    find_var(test_data, dplyr::matches("_bap")),
+    find_var(test_data, tidyselect::matches("_bap")),
     "baz_bap and foo_bap")
 
 })

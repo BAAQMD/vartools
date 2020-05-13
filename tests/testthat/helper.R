@@ -1,5 +1,7 @@
+requireNamespace("tibble")
+
 test_data <-
-  tibble(
+  tibble::tibble(
     year = "CY1990",
     foo_id = 123L,
     foo_qty = 1000,

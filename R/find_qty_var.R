@@ -10,7 +10,7 @@ find_qty_var <- function (
 
   find_var(
     input_data,
-    dplyr::matches("_qty$"),
+    tidyselect::matches("_qty$"),
     ...)
 
 }

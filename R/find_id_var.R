@@ -10,7 +10,7 @@ find_id_var <- function (
 
   find_var(
     input_data,
-    dplyr::matches("_id$"),
+    tidyselect::matches("_id$"),
     ...)
 
 }

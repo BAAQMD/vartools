@@ -10,7 +10,7 @@ find_year_var <- function (
 
   find_var(
     input_data,
-    dplyr::matches("(^year|_yr)(s?)$"),
+    tidyselect::matches("(^year|_yr)(s?)$"),
     ...)
 
 }

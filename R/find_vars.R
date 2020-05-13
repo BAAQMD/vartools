@@ -8,6 +8,7 @@
 #'
 #' @param input_data (tabular data) must have one or more columns
 #' @param pattern (character) regular expression (also see [glob2rx()])
+#' @param ... variables to find (explicitly)
 #' @param verbose (logical) display messages
 #'
 #' @return (character) name of variable(s) matching `pattern`.
@@ -16,11 +17,8 @@ NULL
 
 #' @describeIn find_vars Find one or more
 #'
-#' @importFrom purrr keep
-#' @importFrom stringr str_c str_detect str_remove
-#' @importFrom tidyselect eval_select
-#' @importFrom rlang expr
-#'
+#' @param .strict passed to `tidyselect::eval_select()`
+#' @param suffix retained for backwards compatibility, but prefer `pattern` instead
 #' @details `find_var()` stops if more than one variable in `input_data` matches `pattern`.
 #'
 #' @export

@@ -10,9 +10,15 @@
 \alias{find_year_var}
 \title{Find matching column names}
 \usage{
-find_all_vars(...)
+find_all_vars(
+  input_data,
+  ...,
+  suffix = NULL,
+  .strict = FALSE,
+  verbose = getOption("verbose")
+)
 
-find_var(...)
+find_var(input_data, pattern, suffix = NULL, verbose = getOption("verbose"))
 
 find_id_var(input_data, ...)
 
@@ -22,6 +28,12 @@ find_year_var(input_data, ...)
 }
 \arguments{
 \item{input_data}{(tabular data) must have one or more columns}
+
+\item{...}{variables to find (explicitly)}
+
+\item{suffix}{retained for backwards compatibility, but prefer `pattern` instead}
+
+\item{.strict}{passed to `tidyselect::eval_select()`}
 
 \item{verbose}{(logical) display messages}
 

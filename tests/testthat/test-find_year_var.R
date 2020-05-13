@@ -1,10 +1,12 @@
 context("find_year_var")
 
+requireNamespace("dplyr")
+
 test_that("stop if not found", {
 
   expect_error(
     find_year_var(
-      select(test_data, -year)),
+      dplyr::select(test_data, -year)),
     "matching")
 
 })
@@ -21,7 +23,7 @@ test_that('finds plural form ("years")', {
 
   expect_equal(
     find_year_var(
-      rename(test_data, years = year)),
+      dplyr::rename(test_data, years = year)),
     "years")
 
 })

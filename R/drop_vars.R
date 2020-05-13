@@ -1,5 +1,6 @@
 #' Drop one or more variables from a data frame
 #'
+#' @param input_data tabular data
 #' @param \dots passed to [tidyselect::vars_select()]
 #' @param .strict logical
 #' @param verbose logical

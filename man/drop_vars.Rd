@@ -7,6 +7,8 @@
 drop_vars(input_data, ..., .strict = FALSE, verbose = TRUE)
 }
 \arguments{
+\item{input_data}{tabular data}
+
 \item{\dots}{passed to [tidyselect::vars_select()]}
 
 \item{.strict}{logical}
