@@ -22,8 +22,6 @@ drop_vars <- function (
   verbose = TRUE
 ) {
 
-  require(rlang)
-
   try({
 
     drop_vars <-
