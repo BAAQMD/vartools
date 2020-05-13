@@ -1,7 +1,7 @@
 Package: vartools
 Type: Package
 Title: Extras for tidyverse-style selection and deselection
-Version: 2020.04.08
+Version: 2020.05.13
 Author: David Holstius
 Imports:
   tidyselect,
