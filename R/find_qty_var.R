@@ -2,8 +2,6 @@
 
 #' @describeIn find_vars Find variable ending in "qty"
 #'
-#' @usage find_qty_var(...)
-#'
 #' @export
 find_qty_var <- function (
   input_data,

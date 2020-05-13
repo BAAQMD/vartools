@@ -14,11 +14,11 @@ find_all_vars(...)
 
 find_var(...)
 
-find_id_var(...)
+find_id_var(input_data, ...)
 
-find_qty_var(...)
+find_qty_var(input_data, ...)
 
-find_year_var(...)
+find_year_var(input_data, ...)
 }
 \arguments{
 \item{input_data}{(tabular data) must have one or more columns}

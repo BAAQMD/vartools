@@ -2,8 +2,6 @@
 
 #' @describeIn find_vars Find variable ending in "_id"
 #'
-#' @usage find_id_var(...)
-#'
 #' @export
 find_id_var <- function (
   input_data,

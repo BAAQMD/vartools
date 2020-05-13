@@ -15,7 +15,6 @@
 NULL
 
 #' @describeIn find_vars Find one or more
-#' @usage find_all_vars(...)
 #'
 #' @details `find_var()` stops if more than one variable in `input_data` matches `pattern`.
 #'
@@ -78,7 +77,6 @@ find_all_vars <- function (
 }
 
 #' @describeIn find_vars Find exactly one
-#' @usage find_var(...)
 #'
 #' @export
 find_var <- function (
