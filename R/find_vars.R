@@ -16,6 +16,11 @@ NULL
 
 #' @describeIn find_vars Find one or more
 #'
+#' @importFrom purrr keep
+#' @importFrom stringr str_c str_detect str_remove
+#' @importFrom tidyselect eval_select
+#' @importFrom rlang expr
+#'
 #' @details `find_var()` stops if more than one variable in `input_data` matches `pattern`.
 #'
 #' @export
@@ -37,8 +42,8 @@ find_all_vars <- function (
   if (!is.null(suffix)) {
 
     pattern <-
-      str_c(
-        str_remove(suffix, "\\$$"),
+      stringr::str_c(
+        stringr::str_remove(suffix, "\\$$"),
         "$")
 
     found_vars <-
