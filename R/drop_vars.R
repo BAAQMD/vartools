@@ -41,14 +41,3 @@ drop_vars <- function (
   return(input_data)
 
 }
-
-drop_vars(mtcars, "cyl")
-drop_vars(mtcars, c("mpg", "cyl"))
-drop_vars(mtcars, mpg, cyl)
-drop_vars(mtcars, mpg, foo, bar)
-drop_vars(mtcars, mean)
-drop_vars(mtcars, c("mpg", "foo", "bar"))
-v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!v1)
-v1 <- c("mpg", "cyl"); drop_vars(mtcars, !!!v1)
-v2 <- c("mpg", "foo", "bar"); drop_vars(mtcars, !!!v2)
-
